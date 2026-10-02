@@ -1,0 +1,26 @@
+<section class="agenda">
+    <h2>Agendamentos</h2>
+
+    <div class="tabela-agenda-container">
+        <table class="tabela-agenda">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Horário</th>
+              <th>Cliente</th>
+              <th>CPF</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each agendamentos}}
+              <tr>
+                <td>{{this.data}}</td>
+                <td>{{this.horario}}</td>
+                <td>{{this.clienteId.nome}}</td>
+                <td>{{this.clienteId.cpf}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+    </div>
+</section>

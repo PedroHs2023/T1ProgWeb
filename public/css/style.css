@@ -1,0 +1,347 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background: #2a9d8f;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.home {
+    padding: 28px;
+    background: #fff;
+    border: 1px solid #d8e3e0;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(25, 65, 55, 0.07);
+}
+
+.home h2 {
+    margin-top: 0;
+    color: #215b53;
+}
+
+#formAgendamento {
+    display: grid;
+    gap: 12px;
+}
+
+#formAgendamento > label {
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+#formAgendamento input[type="date"],
+#formAgendamento input[type="text"] {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #b8cbc6;
+    border-radius: 5px;
+    font: inherit;
+}
+
+#formAgendamento button {
+    padding: 11px 16px;
+    border: 0;
+    border-radius: 6px;
+    background: #2a9d8f;
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#formAgendamento button:hover {
+    background: #217c72;
+}
+
+#formAgendamento button:focus-visible,
+#formAgendamento input:focus-visible {
+    outline: 2px solid #215b53;
+    outline-offset: 2px;
+}
+
+#formAgendamento fieldset {
+    min-width: 0;
+    margin: 8px 0;
+    padding: 16px;
+    border: 1px solid #d8e3e0;
+    border-radius: 6px;
+}
+
+#formAgendamento legend {
+    padding: 0 6px;
+    color: #215b53;
+    font-weight: 600;
+}
+
+.card {
+    margin-top: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #e9f7f3;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+}
+
+.tabela-agenda-container {
+    overflow-x: auto;
+}
+
+.tabela-agenda {
+    width: 100%;
+    min-width: 560px;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.tabela-agenda th,
+.tabela-agenda td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #d8e3e0;
+}
+
+.tabela-agenda th {
+    background: #2a9d8f;
+    color: #fff;
+}
+
+.tabela-agenda tbody tr:nth-child(even) {
+    background: #f0f7f5;
+}
+
+.tabela-agenda tbody tr:hover {
+    background: #e1f1ed;
+}
+.navegacao {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #fff;
+    border-bottom: 1px solid #d8e3e0;
+}
+
+.navegacao a {
+    padding: 10px 16px;
+    color: #215b53;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 150ms ease, color 150ms ease;
+}
+
+.navegacao a:hover {
+    color: #153f39;
+    background: #e1f1ed;
+}
+
+.navegacao a:focus-visible {
+    outline: 2px solid #215b53;
+    outline-offset: 2px;
+}
+
+@media (max-width: 520px) {
+    .navegacao a {
+        flex: 1;
+        text-align: center;
+    }
+}
+
+#calendarioSemanal {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    gap: 12px;
+}
+
+#calendarioSemanal > section {
+    min-width: 0;
+    padding: 14px;
+    background: #f9f9f9;
+    border: 1px solid #d8e3e0;
+    border-radius: 6px;
+}
+
+#calendarioSemanal h3 {
+    margin: 0 0 12px;
+    padding-bottom: 10px;
+    color: #215b53;
+    font-size: 1rem;
+    border-bottom: 1px solid #d8e3e0;
+}
+
+#calendarioSemanal label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+    padding: 9px;
+    background: #fff;
+    border: 1px solid #d8e3e0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#calendarioSemanal label:hover,
+#calendarioSemanal label:has(input:checked) {
+    background: #e1f1ed;
+    border-color: #2a9d8f;
+}
+
+#calendarioSemanal input[type="radio"] {
+    accent-color: #2a9d8f;
+}
+
+@media (max-width: 760px) {
+    #calendarioSemanal {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    #calendarioSemanal {
+        grid-template-columns: 1fr;
+    }
+
+    .home {
+        padding: 18px;
+    }
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(110px, 0.7fr) auto;
+    grid-template-areas:
+        "dia-label horario-label capacidade-label salvar"
+        "dia-input horario-input capacidade-input salvar";
+    align-items: end;
+    gap: 6px 14px;
+    margin-bottom: 28px;
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #d8e3e0;
+    border-radius: 8px;
+    box-shadow: 0 3px 12px rgba(25, 65, 55, 0.07);
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] label {
+    margin-top: 4px;
+    color: #215b53;
+    font-weight: 600;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] label:nth-of-type(1) {
+    grid-area: dia-label;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] label:nth-of-type(2) {
+    grid-area: horario-label;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] label:nth-of-type(3) {
+    grid-area: capacidade-label;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] select {
+    grid-area: dia-input;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] input[type="time"] {
+    grid-area: horario-input;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] input[type="number"] {
+    grid-area: capacidade-input;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] select,
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] input {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 11px;
+    color: #263b36;
+    background: #fff;
+    border: 1px solid #b8cbc6;
+    border-radius: 5px;
+    font: inherit;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] select:focus-visible,
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] input:focus-visible {
+    outline: 2px solid #215b53;
+    outline-offset: 2px;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] button {
+    grid-area: salvar;
+    align-self: end;
+    justify-self: start;
+    margin: 0 0 1px;
+    padding: 11px 20px;
+    color: #fff;
+    background: #2a9d8f;
+    border: 0;
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] button:hover {
+    background: #217c72;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > section {
+    padding: 24px;
+    background: #fff;
+    border: 1px solid #d8e3e0;
+    border-radius: 8px;
+}
+
+main:has(> form[action="/ajustaPetAgenda"]) > section h2 {
+    margin-top: 0;
+    color: #215b53;
+}
+
+@media (max-width: 760px) {
+    main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] {
+        grid-template-columns: 1fr;
+        grid-template-areas: none;
+        gap: 8px;
+    }
+
+    main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"] > * {
+        grid-area: auto;
+    }
+
+    main:has(> form[action="/ajustaPetAgenda"]) > form[action="/ajustaPetAgenda"],
+    main:has(> form[action="/ajustaPetAgenda"]) > section {
+        padding: 16px;
+    }
+}

@@ -1,0 +1,49 @@
+<form action="/ajustaPetAgenda" method="POST">
+    <label for="diaSemana">Dia da semana</label>
+    <select id="diaSemana" name="diaSemana">
+        <option value="segunda">Segunda</option> 
+        <option value="terca">Terça</option>
+        <option value="quarta">Quarta</option>
+        <option value="quinta">Quinta</option>
+        <option value="sexta">Sexta</option>
+        <option value="sabado">Sábado</option>
+    </select>
+
+    <label for="horario">Horário</label>
+    <input id="horario" type="time" name="horario" min="07:00" max="18:00" step="60" required>
+
+    <label for="capacidade">Capacidade</label>
+    <input id="capacidade" type="number" name="capacidade" min="0" step="1" value="1" required>
+    <button type="submit">Salvar</button>
+</form>
+
+<section>
+    <h2>Configurações atuais</h2>
+
+    <div class="tabela-agenda-container">
+        <table class="tabela-agenda">
+            <thead>
+                <tr>
+                    <th>Dia</th>
+                    <th>Horário</th>
+                    <th>Capacidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each configuracoes}}
+                    <tr>
+                        <td>{{this.diaSemana}}</td>
+                        <td>{{this.horario}}</td>
+                        <td>{{this.capacidade}}</td>
+                    </tr>
+                {{else}}
+                    <tr>
+                        <td colspan="3">Nenhum horário configurado.</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script src="/js/agendaConfig.js" defer></script>
